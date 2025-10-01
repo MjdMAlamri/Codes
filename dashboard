@@ -1,0 +1,157 @@
+// app/dashboard.js
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import DashboardBase from "../components/DashboardBase";
+
+export default function Dashboard() {
+  return (
+    <DashboardBase>
+      {/* Banner */}
+      <View style={styles.banner}>
+        <View>
+          <Text style={styles.bannerDate}>September 23, 2025</Text>
+          <Text style={styles.bannerTitle}>Welcome back, Rakan!</Text>
+          <Text style={styles.bannerSubtitle}>
+            Always stay updated in your student portal
+          </Text>
+        </View>
+        <Image
+          source={{ uri: "https://i.ibb.co/DV7pYjQ/student.png" }} // صورة افتراضية
+          style={{ width: 100, height: 100 }}
+        />
+      </View>
+
+      {/* Quick Stats */}
+      <View style={styles.row}>
+        <StatCard value="534" label="Equations Solved" />
+        <StatCard value="500" label="Correct Solutions" />
+        <StatCard value="3 min" label="Per question" />
+        <EventCard />
+      </View>
+
+      {/* Status + Performance + Tasks */}
+      <View style={styles.row}>
+        <View style={{ flex: 2 }}>
+          <Text style={styles.sectionTitle}>Today's Status</Text>
+          <View style={styles.row}>
+            <StatMini value="120" label="Equations Attempted" />
+            <StatMini value="100" label="Correct Solutions" />
+            <StatMini value="90" label="Time Practiced (min)" />
+          </View>
+          <Text style={{ color: "green", marginTop: 8 }}>Today’s status: Very good</Text>
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <Text style={styles.sectionTitle}>Classes Performance</Text>
+          <Image
+            source={{ uri: "https://i.ibb.co/R4p6qk3/chart.png" }} // Placeholder for chart
+            style={{ width: "100%", height: 120, resizeMode: "contain" }}
+          />
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <View style={styles.rowBetween}>
+            <Text style={styles.sectionTitle}>Daily Tasks</Text>
+            <Text style={{ color: "blue" }}>See all</Text>
+          </View>
+          <View style={styles.taskCard}>
+            <Text style={styles.taskTitle}>MathX</Text>
+            <Text style={styles.taskText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Text>
+            <Text style={{ color: "blue" }}>See more</Text>
+          </View>
+        </View>
+      </View>
+    </DashboardBase>
+  );
+}
+
+/* --- Components --- */
+function StatCard({ value, label }) {
+  return (
+    <View style={styles.statCard}>
+      <View style={styles.iconBox} />
+      <Text style={styles.statValue}>{value}</Text>
+      <Text style={styles.statLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function StatMini({ value, label }) {
+  return (
+    <View style={styles.statMini}>
+      <Text style={styles.statValue}>{value}</Text>
+      <Text style={styles.statLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function EventCard() {
+  return (
+    <View style={styles.eventCard}>
+      <Text style={styles.eventTitle}>Upcoming Events</Text>
+      <Text style={styles.eventText}>Algebra Quiz</Text>
+      <Text style={styles.eventSub}>By 25th of Sep</Text>
+    </View>
+  );
+}
+
+/* --- Styles --- */
+const styles = StyleSheet.create({
+  banner: {
+    backgroundColor: "#0C2A5B",
+    borderRadius: 12,
+    padding: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  bannerDate: { color: "#E5E7EB", fontSize: 12 },
+  bannerTitle: { color: "#fff", fontSize: 22, fontWeight: "bold" },
+  bannerSubtitle: { color: "#E5E7EB", marginTop: 4 },
+
+  row: { flexDirection: "row", gap: 12, marginBottom: 20 },
+  rowBetween: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10 },
+
+  statCard: {
+    flex: 1,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 16,
+    alignItems: "center",
+  },
+  iconBox: {
+    width: 40,
+    height: 40,
+    backgroundColor: "#2B6DE8",
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  statValue: { fontSize: 18, fontWeight: "bold", color: "#0C2A5B" },
+  statLabel: { fontSize: 12, color: "#6B7280", textAlign: "center" },
+
+  statMini: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    marginHorizontal: 4,
+  },
+
+  eventCard: {
+    flex: 1,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 12,
+  },
+  eventTitle: { fontSize: 14, fontWeight: "bold", marginBottom: 6 },
+  eventText: { fontSize: 12, color: "#0C2A5B" },
+  eventSub: { fontSize: 11, color: "#6B7280" },
+
+  sectionTitle: { fontWeight: "bold", marginBottom: 6, fontSize: 14 },
+  taskCard: { backgroundColor: "#fff", borderRadius: 10, padding: 12, marginBottom: 10 },
+  taskTitle: { fontWeight: "bold", fontSize: 13 },
+  taskText: { fontSize: 12, color: "#6B7280", marginBottom: 4 },
+});
