@@ -1,0 +1,92 @@
+// app/create-quiz.js
+import React from "react";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import DashboardBase from "../components/DashboardBase"; // Sidebar + Top Banner
+
+const COLORS = {
+  navy: "#0C2A5B",
+  white: "#FFFFFF",
+  light: "#F5F7FD",
+  gray: "#9CA3AF",
+  text: "#111827",
+};
+
+const S = 12;
+
+export default function CreateQuizPage() {
+  return (
+    <DashboardBase>
+      <ScrollView
+        style={styles.page}
+        contentContainerStyle={{ padding: S * 2 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Main content row */}
+        <View style={styles.row}>
+          {/* Left Card */}
+          <View style={styles.card}>
+            <Text style={styles.title}>Create a new quiz</Text>
+            <Image
+              source={{ uri: "https://cdn-icons-png.flaticon.com/512/1787/1787077.png" }}
+              style={styles.quizImage}
+            />
+          </View>
+
+          {/* History Section */}
+          <View style={styles.historyCard}>
+            <Text style={styles.historyTitle}>History</Text>
+            {/* Placeholder for history items */}
+            <View style={styles.historyBox}>
+              <Text style={{ color: COLORS.gray }}>No quizzes created yet.</Text>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </DashboardBase>
+  );
+}
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: COLORS.light,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  card: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    borderRadius: 16,
+    padding: S * 2,
+    marginRight: S * 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: COLORS.navy,
+    marginBottom: S * 2,
+    textAlign: "center",
+  },
+  quizImage: {
+    width: 100,
+    height: 100,
+    resizeMode: "contain",
+  },
+  historyCard: {
+    width: 250,
+    backgroundColor: COLORS.white,
+    borderRadius: 16,
+    padding: S * 2,
+  },
+  historyTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: COLORS.navy,
+    marginBottom: S,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E7EB",
+    paddingBotto
