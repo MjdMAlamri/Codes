@@ -1,0 +1,98 @@
+// app/class1.js
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import DashboardBase from "../components/DashboardBase";
+
+export default function Class1Report() {
+  return (
+    <DashboardBase>
+      {/* Banner */}
+      <View style={styles.banner}>
+        <Text style={styles.bannerTitle}>Class 1 Report</Text>
+        <View style={styles.bannerImage} /> 
+      </View>
+
+      {/* Top Cards */}
+      <View style={styles.topCards}>
+        {[
+          { value: "100", label: "Equations Solved" },
+          { value: "90", label: "Correct Solutions" },
+          { value: "1.5 min", label: "Per question" },
+          { value: "Class 1", label: "Students" },
+        ].map((item, i) => (
+          <View key={i} style={styles.card}>
+            <View style={styles.iconBox} />
+            <Text style={styles.value}>{item.value}</Text>
+            <Text style={styles.label}>{item.label}</Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Today's Status + Performance Breakdown */}
+      <View style={styles.bottomRow}>
+        {/* Left box */}
+        <View style={styles.statusBox}>
+          <Text style={styles.sectionTitle}>Today’s Status</Text>
+          <View style={styles.statusRow}>
+            <View style={styles.statusItem}>
+              <Text style={styles.statusValue}>50</Text>
+              <Text style={styles.statusLabel}>Equations Attempted</Text>
+            </View>
+            <View style={styles.statusItem}>
+              <Text style={styles.statusValue}>45</Text>
+              <Text style={styles.statusLabel}>Correct Solutions</Text>
+            </View>
+            <View style={styles.statusItem}>
+              <Text style={styles.statusValue}>30</Text>
+              <Text style={styles.statusLabel}>Time Practiced (min)</Text>
+            </View>
+          </View>
+          <Text style={styles.statusOverall}>
+            Today’s status: <Text style={{ color: "green", fontWeight: "700" }}>Very good</Text>
+          </Text>
+        </View>
+
+        {/* Right box */}
+        <View style={styles.performanceBox}>
+          <Text style={styles.sectionTitle}>Class Performance Breakdown:</Text>
+          <Text style={styles.breakdown}>🔴 Active Students Today: 25 / 30</Text>
+          <Text style={styles.breakdown}>🔵 Avg Time Practiced per Student: 25 / 30</Text>
+          <Text style={styles.breakdown}>🟣 Engagement Status: High</Text>
+          <Text style={styles.overall}>
+            Overall Class Status:{" "}
+            <Text style={{ fontWeight: "700", color: "red" }}>Needs Improvement</Text>
+          </Text>
+        </View>
+      </View>
+    </DashboardBase>
+  );
+}
+
+/* --- Styles --- */
+const styles = StyleSheet.create({
+  banner: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  bannerTitle: { fontSize: 18, fontWeight: "bold", color: "#0C2A5B" },
+  bannerImage: {
+    width: 80,
+    height: 80,
+    backgroundColor: "#ccc", // Placeholder لصورة
+    borderRadius: 12,
+  },
+
+  topCards: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  card: {
+    flex: 1,
