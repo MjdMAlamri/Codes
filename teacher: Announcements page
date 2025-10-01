@@ -1,0 +1,76 @@
+// app/announcements.js
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import DashboardBase from "../components/DashboardBase";
+
+export default function Announcements() {
+  return (
+    <DashboardBase title="Send Announcements to Your Students">
+      {/* Choose Classroom */}
+      <View style={styles.card}>
+        <Text style={styles.label}>Choose Classroom</Text>
+        <TouchableOpacity style={styles.dropdown}>
+          <Text style={styles.dropdownText}>Select a Class ▼</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Write Message */}
+      <View style={styles.card}>
+        <Text style={styles.label}>Write your message</Text>
+        <TextInput
+          style={styles.textArea}
+          placeholder="Type your announcement here..."
+          placeholderTextColor="#9CA3AF"
+          multiline
+        />
+      </View>
+
+      {/* Send Button */}
+      <TouchableOpacity style={styles.sendBtn}>
+        <Text style={styles.sendBtnText}>Send Announcement</Text>
+      </TouchableOpacity>
+    </DashboardBase>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#0F172A",
+    marginBottom: 10,
+  },
+  dropdown: {
+    backgroundColor: "#F3F5FA",
+    padding: 12,
+    borderRadius: 10,
+  },
+  dropdownText: {
+    fontSize: 14,
+    color: "#374151",
+  },
+  textArea: {
+    backgroundColor: "#F3F5FA",
+    borderRadius: 10,
+    padding: 12,
+    minHeight: 180,
+    textAlignVertical: "top",
+    fontSize: 14,
+    color: "#0F172A",
+  },
+  sendBtn: {
+    backgroundColor: "#2B6DE8",
+    paddingVertical: 14,
+    borderRadius:
